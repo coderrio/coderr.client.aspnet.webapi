@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net451;net46</TargetFrameworks>
+    <PackageId>Coderr.Client.AspNet.WebApi</PackageId>
+    <Description>Automates exception handling for ASP.NET WebApi applications</Description>
+    <Version>1.0.0</Version>
+    <PackageReleaseNotes>New release of the package.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Coderr AB</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>© 2020 Coderr AB. All rights reserved.</Copyright>
+    <PackageTags>logger exceptions analysis asp.net</PackageTags>
+    <PackageIcon>NugetIcon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/coderrio/coderr.client.aspnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://coderr.io</PackageProjectUrl>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Coderr.Client.AspNet.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Nuget\NugetIcon.png" Pack="true" PackagePath="/NugetIcon.png"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Coderr.Client" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,6 @@
+@using Coderr.Client.AspNet.WebApi.Demo.Areas.HelpPage.ModelDescriptions
+@model Coderr.Client.AspNet.WebApi.Demo.Areas.HelpPage.ModelDescriptions.CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}
