@@ -118,4 +118,32 @@ Err.Configuration.ConfigureLogging(options =>
 });
 ```
 
-![](https://coderr.io/documentation/screens/libraries/aspnet-webapi/logs.png)
+# What do I get?
+
+The library can of course report unhandled exceptions, but also:
+
+* Slow HTTP requests
+* Invalid models
+* 401 and 403 responses
+
+For every reported exception we will provide (when available):
+
+* Action information
+* Logged in user (username or tokenized) (i.e. allows you to track number of affected users)
+* Model state (if fields are OK or why they failed validation)
+* Request content
+* Request information
+* Request cookies
+* Route data
+
+## Examples
+
+![](https://raw.githubusercontent.com/coderrio/Coderr.Documentation/master/docs/screens/libraries/aspnet-webapi/logs.png)
+
+![](https://github.com/coderrio/Coderr.Documentation/blob/master/docs/screens/libraries/aspnet-webapi/collections/action-descriptor.png?raw=true)
+
+![](https://github.com/coderrio/Coderr.Documentation/blob/master/docs/screens/libraries/aspnet-webapi/collections/request.png?raw=true)
+
+![](https://github.com/coderrio/Coderr.Documentation/blob/master/docs/screens/libraries/aspnet-webapi/collections/route-data.png?raw=true)
+
+
