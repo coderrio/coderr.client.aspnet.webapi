@@ -32,7 +32,6 @@ namespace Coderr.Client.AspNet.WebApi.Demo.Controllers
                     ModelState.AddModelError("", "Need some model");
                     break;
             }
-
             return "value";
         }
 
@@ -46,7 +45,7 @@ namespace Coderr.Client.AspNet.WebApi.Demo.Controllers
         {
         }
 
-        
+
         public void Put(int id, [FromBody] string value)
         {
         }

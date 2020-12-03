@@ -4,8 +4,8 @@
     <TargetFrameworks>net451;net46</TargetFrameworks>
     <PackageId>Coderr.Client.AspNet.WebApi</PackageId>
     <Description>Automates exception handling for ASP.NET WebApi applications</Description>
-    <Version>1.0.0</Version>
-    <PackageReleaseNotes>New release of the package.</PackageReleaseNotes>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Added extensions to allow manually reported errors to pass through the pipeline.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,13 +1,13 @@
 ASP.NET WebApi
 ===============
 
-This documentation is for the ASP.NET WebApi library. You can find out other libraries [here](../).
+This documentation is for the ASP.NET WebApi library. You can find out other libraries [here](https://www.nuget.org/packages?q=coderr.client).
 
 This library will report all unhandled ASP.NET WebApi exceptions. It can also report if something goes too slow or if there are too many authentication failures.
 
 # Prerequisites
 
-You should have installed [Coderr.Client.AspNet.WebApi](https://www.nuget.org/packages/Coderr.Client.AspNet.WebApi/) and done the base configuration (specified credentials for Coderr).
+You should have installed [Coderr.Client.AspNet.WebApi](https://www.nuget.org/packages/Coderr.Client.AspNet.WebApi/).
 
 # Getting started
 
@@ -21,10 +21,59 @@ Err.Configuration.Credentials(url,
     "yourAppKey",
     "yourSharedSecret");
 
+// "config" should be the http configuration for WebApi.
 Err.Configuration.CatchWebApiExceptions(config);
 ```
 
 Once done, try to throw an exception in one of your WebApi controllers.
+
+## Reporting through the WebApi pipeline.
+
+To make sure that Coderr can collect all information when manually handling exceptions, do not use `Err.Report` but instead use one of the following methods:
+
+```csharp
+public string Get(int id)
+{
+    try
+    {
+        SomeMethod();
+    }
+    catch (Exception err)
+    {
+        // Uses the controller to pickup information.
+        //
+        // do note that normally you do not add try/catch in actions
+        // since it's better to let exceptions flow through WebApi.
+        this.ReportToCoderr(err);
+    }
+
+    return "value";
+}
+```
+
+Another possibility when you only have access to the `HttpRequestMessage`.
+
+```csharp
+internal class SomeMessageHandler : DelegatingHandler
+{
+    /// <inheritdoc />
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await base.SendAsync(request, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            // Report it to Coderr
+            request.ReportToCoderr(ex);
+            
+            return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        }
+    }
+}
+```
 
 # Tracking performance
 
